@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+    <style>
+        .author{
+            border: 2px solid red;
+            padding: 30px;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <div class="author" id="special-class">
+                <h3 class="author-name">Milton</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, voluptates cumque. Ex eos praesentium perferendis. Harum, qui sint, ipsam expedita officia vero necessitatibus iusto, vel illo ullam perspiciatis maxime recusandae.</p>
+            </div>
+            <div class="author">
+                <h3 class="author-name">Tayaba</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, voluptates cumque. Ex eos praesentium perferendis. Harum, qui sint, ipsam expedita officia vero necessitatibus iusto, vel illo ullam perspiciatis maxime recusandae.</p>
+            </div>
+            <div class="author">
+                <h3 class="author-name">Neha</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, voluptates cumque. Ex eos praesentium perferendis. Harum, qui sint, ipsam expedita officia vero necessitatibus iusto, vel illo ullam perspiciatis maxime recusandae.</p>
+            </div>
+            
+        </section>
+    </main>
+    <script>
+        const elements=document.getElementById('special-class');
+        const elemment=document.createElement('p');
+        elemment.innerHTML="Nothing";
+        elements.appendChild(elemment);
+    </script>
+</body>
+</html>
