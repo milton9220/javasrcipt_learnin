@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubble</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Bubble Capture Learning</h1>
+        <ul id="my-list">
+            <li class="item" id="item1">Lorem, ipsum dolor.</li>
+            <li class="item">Accusantium, earum non.</li>
+            <li class="item">Ullam, eum exercitationem.</li>
+            <li class="item">Ullam, cupiditate voluptatibus.</li>
+            <li class="item">Perspiciatis, debitis minima.</li>
+        </ul>
+    </div>
+    <script>
+        const container=document.getElementById('container');
+        const ul=document.getElementById('my-list');
+        const list_item=document.getElementById('item1');
+
+        container.addEventListener('click',function(event){
+            console.log('Container clicked');
+            
+        });
+
+        ul.addEventListener('click',function(event){
+            console.log('Ul clicked');
+            event.stopPropagation();
+        });
+        list_item.addEventListener('click',function(event){
+            console.log('List item 1 clicked');
+            
+        });
+    </script>
+</body>
+</html>
