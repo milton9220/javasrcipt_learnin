@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubble</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Event Bubble Example</h1>
+        <ul id="my-list">
+            <li class="item" id="item1"><a href="#">Link 1</a></li>
+            <li class="item"><a href="#">Link 2</a></li>
+            <li class="item"><a href="#">Link 3</a></li>
+            <li class="item"><a href="#">Link 4</a></li>
+            <li class="item"><a href="#">Link 5</a></li>
+        </ul>
+        <button id="add-new-item">Add New Item</button>
+    </div>
+    <script>
+        document.getElementById("add-new-item").addEventListener('click',(event)=>{
+            let list=document.getElementById("my-list");
+            let new_item=document.createElement('li');
+            new_item.innerHTML="<a href='#'>Brand new item</a>";
+            list.appendChild(new_item);
+        });
+        document.getElementById("my-list").addEventListener('click',function(event){
+            event.path[1].parentNode.removeChild(event.path[1]);
+        });
+
+    </script>
+</body>
+</html>
