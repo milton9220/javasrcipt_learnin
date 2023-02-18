@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Temperature Hot</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url(images/bg-image.jpg) no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form class="col-md-6 m-auto py-5">
+            <div class="input-group mb-3">
+                <input id="city" type="text" class="form-control" placeholder="Enter a location for Weather ...">
+                <div class="input-group-append">
+                    <button id="submit" type="button" class="btn btn-danger">Search</button>
+                </div>
+            </div>
+        </form>
+        <div class="weather-status text-white text-center">
+            <img id="weather-icon" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <h1 id="city-name">Dhaka</h1>
+            <h3><span id="temperature">38.06</span>&deg;C</h3>
+            <h1 id="lead">Clouds</h1>
+        </div>
+    </div>
+    <script>
+       
+        const apiKey = "8cde27e9c9c5178e136478996713832b";
+        
+        const setInnerText=(id,text)=>{
+            document.getElementById(id).innerText=text;
+        };
+        const fetchData=(endpoint,city)=>{
+            fetch(endpoint)
+                .then(response => response.json())
+                .then(data => {
+                    const temperature = data.main.temp;
+                    const weatherDescription = data.weather[0].main;
+                    const url = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+
+                    setInnerText("city-name",city);
+                    setInnerText("temperature",temperature);
+                    setInnerText("lead",weatherDescription);
+    
+                    const imgIcon = document.getElementById('weather-icon');
+                    imgIcon.setAttribute('src', url);
+
+                })
+            .catch(error => {
+                console.error("An error occurred while fetching the weather data:", error);
+            });
+        };
+        
+        document.getElementById('submit').addEventListener('click',()=>{
+            let city = document.querySelector('#city').value;
+            city=city.charAt(0).toUpperCase()+city.slice(1);
+            const endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${city},&appid=${apiKey}&units=metric`;
+            fetchData(endpoint,city);
+
+        });
+        
+        window.onload=()=>{
+            const city="Dhaka";
+            const endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${city},&appid=${apiKey}&units=metric`;
+            fetchData(endpoint,city);
+        }
+    </script>
+</body>
+
+</html>

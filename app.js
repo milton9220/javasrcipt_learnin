@@ -33,11 +33,35 @@ for(var i=0;i<numbers.length;i++){
 console.log(max);
 console.log(index);
 */
-var numbers=[1,3,4,5,6];
-var sum=0;
-for(var i=0;i<numbers.length;i++){
-    sum+=numbers[i];
-}
-console.log(sum);
+// var numbers=[1,3,4,5,6];
+// var sum=0;
+// for(var i=0;i<numbers.length;i++){
+//     sum+=numbers[i];
+// }
+// console.log(sum);
+
+const student=[
+    {id:1,name:'Milton'},
+    {id:2,name:'Tayaba'},
+    {id:3,name:'Neha'}
+];
+
+// let element=[];
+// for (let index = 0; index < student.length; index++) {
+//     element.push(student[index]['name']);
+// }
+// console.log(element);
+
+const name=student.map(s=>s.name);
+console.log(name);
+const ids=student.map(s=>s.id);
+console.log(ids);
+
+const bigger=student.filter(s=>s.id>2);
+console.log(bigger);
+
+
+
+
 
 
